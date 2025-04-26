@@ -1,0 +1,21 @@
+version: '1'
+services:
+  bolo:
+    image: bolo
+    container_name: bolo
+    ports:
+      - '8080:8080'
+    tty: true
+    stdin_open: true
+    command: sh -c "/run.sh && exec /bin/bash"
+    depends_on:
+      - mysql
+  mysql:
+    platform: linux/x86_64
+    image: docker.io/library/mysql:latest
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: xxxxxxxx
+    ports:
+      - '3306:3306'
