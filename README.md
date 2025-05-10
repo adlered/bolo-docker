@@ -1,8 +1,8 @@
-## 🍍使用我们的新版 Bolo Docker 套件快速部署
+## 🍍 使用我们的新版 Bolo Docker 套件快速部署
 
-### 本仓库中附带的 `bolo.zip` 是最新版的 Bolo ，请放心搭建！
+### 本仓库中附带的 `bolo.zip` 是最新版的 Bolo ，请放心搭建
 
-### 请完整阅读整篇文档，以确保完整正确的 Bolo 构建！
+### 请完整阅读整篇文档，以确保完整正确的 Bolo 构建
 
 1. 克隆当前仓库内全部文件：`git clone https://github.com/AdlerED/bolo-docker`
 2. 进入 `bolo-docker` 文件夹，编辑 `config.sh` 文件（文件内含有注释解释）
@@ -16,17 +16,32 @@
 
 你可以直接 [从这里](https://github.com/AdlerED/bolo-solo/releases) 下载 Bolo 最新版的压缩包，并将压缩包文件名修改为 `bolo.zip`，替换 `bolo-docker` 中的 `bolo.zip` 文件，然后在 `bolo-docker` 文件夹下输入以下命令重新部署并运行 Bolo ：
 
+### 镜像构建
+
 ```
 docker kill bolo
 docker rm bolo
 docker rmi bolo
 docker build -t "bolo" .
+```
+
+### docker 命令运行
+
+```
 docker run -it -d --name bolo -p8080:8080 bolo /run.sh
+```
+
+### docker compose 运行
+
+默认安装了 mysql,请设置你的 mysql 密码,不需要可去掉
+
+```
+docker-compose up -d
 ```
 
 ### 其它信息（非必须）
 
-#### 进入 Bolo 的虚拟容器：
+#### 进入 Bolo 的虚拟容器
 
 ```
 docker exec -it bolo /bin/sh
